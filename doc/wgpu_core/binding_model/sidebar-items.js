@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["BindError",""],["BindGroupError",""],["BindGroupLayoutError",""],["BindingResource",""],["PipelineLayoutError",""]],"struct":[["BindGroup",""],["BindGroupDescriptor",""],["BindGroupDynamicBindingData",""],["BindGroupEntry",""],["BindGroupLayout",""],["BufferBinding",""],["PipelineLayout",""],["PipelineLayoutDescriptor",""]]});
