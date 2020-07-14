@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/git/checkouts/wgpu-53e70f8674b08dd4/01cf22c/wgpu-types/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../wgpu_types/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/git/checkouts/wgpu-53e70f8674b08dd4/f67771f/wgpu-types/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../wgpu_types/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1741,6 +1741,173 @@
 <span id="1741">1741</span>
 <span id="1742">1742</span>
 <span id="1743">1743</span>
+<span id="1744">1744</span>
+<span id="1745">1745</span>
+<span id="1746">1746</span>
+<span id="1747">1747</span>
+<span id="1748">1748</span>
+<span id="1749">1749</span>
+<span id="1750">1750</span>
+<span id="1751">1751</span>
+<span id="1752">1752</span>
+<span id="1753">1753</span>
+<span id="1754">1754</span>
+<span id="1755">1755</span>
+<span id="1756">1756</span>
+<span id="1757">1757</span>
+<span id="1758">1758</span>
+<span id="1759">1759</span>
+<span id="1760">1760</span>
+<span id="1761">1761</span>
+<span id="1762">1762</span>
+<span id="1763">1763</span>
+<span id="1764">1764</span>
+<span id="1765">1765</span>
+<span id="1766">1766</span>
+<span id="1767">1767</span>
+<span id="1768">1768</span>
+<span id="1769">1769</span>
+<span id="1770">1770</span>
+<span id="1771">1771</span>
+<span id="1772">1772</span>
+<span id="1773">1773</span>
+<span id="1774">1774</span>
+<span id="1775">1775</span>
+<span id="1776">1776</span>
+<span id="1777">1777</span>
+<span id="1778">1778</span>
+<span id="1779">1779</span>
+<span id="1780">1780</span>
+<span id="1781">1781</span>
+<span id="1782">1782</span>
+<span id="1783">1783</span>
+<span id="1784">1784</span>
+<span id="1785">1785</span>
+<span id="1786">1786</span>
+<span id="1787">1787</span>
+<span id="1788">1788</span>
+<span id="1789">1789</span>
+<span id="1790">1790</span>
+<span id="1791">1791</span>
+<span id="1792">1792</span>
+<span id="1793">1793</span>
+<span id="1794">1794</span>
+<span id="1795">1795</span>
+<span id="1796">1796</span>
+<span id="1797">1797</span>
+<span id="1798">1798</span>
+<span id="1799">1799</span>
+<span id="1800">1800</span>
+<span id="1801">1801</span>
+<span id="1802">1802</span>
+<span id="1803">1803</span>
+<span id="1804">1804</span>
+<span id="1805">1805</span>
+<span id="1806">1806</span>
+<span id="1807">1807</span>
+<span id="1808">1808</span>
+<span id="1809">1809</span>
+<span id="1810">1810</span>
+<span id="1811">1811</span>
+<span id="1812">1812</span>
+<span id="1813">1813</span>
+<span id="1814">1814</span>
+<span id="1815">1815</span>
+<span id="1816">1816</span>
+<span id="1817">1817</span>
+<span id="1818">1818</span>
+<span id="1819">1819</span>
+<span id="1820">1820</span>
+<span id="1821">1821</span>
+<span id="1822">1822</span>
+<span id="1823">1823</span>
+<span id="1824">1824</span>
+<span id="1825">1825</span>
+<span id="1826">1826</span>
+<span id="1827">1827</span>
+<span id="1828">1828</span>
+<span id="1829">1829</span>
+<span id="1830">1830</span>
+<span id="1831">1831</span>
+<span id="1832">1832</span>
+<span id="1833">1833</span>
+<span id="1834">1834</span>
+<span id="1835">1835</span>
+<span id="1836">1836</span>
+<span id="1837">1837</span>
+<span id="1838">1838</span>
+<span id="1839">1839</span>
+<span id="1840">1840</span>
+<span id="1841">1841</span>
+<span id="1842">1842</span>
+<span id="1843">1843</span>
+<span id="1844">1844</span>
+<span id="1845">1845</span>
+<span id="1846">1846</span>
+<span id="1847">1847</span>
+<span id="1848">1848</span>
+<span id="1849">1849</span>
+<span id="1850">1850</span>
+<span id="1851">1851</span>
+<span id="1852">1852</span>
+<span id="1853">1853</span>
+<span id="1854">1854</span>
+<span id="1855">1855</span>
+<span id="1856">1856</span>
+<span id="1857">1857</span>
+<span id="1858">1858</span>
+<span id="1859">1859</span>
+<span id="1860">1860</span>
+<span id="1861">1861</span>
+<span id="1862">1862</span>
+<span id="1863">1863</span>
+<span id="1864">1864</span>
+<span id="1865">1865</span>
+<span id="1866">1866</span>
+<span id="1867">1867</span>
+<span id="1868">1868</span>
+<span id="1869">1869</span>
+<span id="1870">1870</span>
+<span id="1871">1871</span>
+<span id="1872">1872</span>
+<span id="1873">1873</span>
+<span id="1874">1874</span>
+<span id="1875">1875</span>
+<span id="1876">1876</span>
+<span id="1877">1877</span>
+<span id="1878">1878</span>
+<span id="1879">1879</span>
+<span id="1880">1880</span>
+<span id="1881">1881</span>
+<span id="1882">1882</span>
+<span id="1883">1883</span>
+<span id="1884">1884</span>
+<span id="1885">1885</span>
+<span id="1886">1886</span>
+<span id="1887">1887</span>
+<span id="1888">1888</span>
+<span id="1889">1889</span>
+<span id="1890">1890</span>
+<span id="1891">1891</span>
+<span id="1892">1892</span>
+<span id="1893">1893</span>
+<span id="1894">1894</span>
+<span id="1895">1895</span>
+<span id="1896">1896</span>
+<span id="1897">1897</span>
+<span id="1898">1898</span>
+<span id="1899">1899</span>
+<span id="1900">1900</span>
+<span id="1901">1901</span>
+<span id="1902">1902</span>
+<span id="1903">1903</span>
+<span id="1904">1904</span>
+<span id="1905">1905</span>
+<span id="1906">1906</span>
+<span id="1907">1907</span>
+<span id="1908">1908</span>
+<span id="1909">1909</span>
+<span id="1910">1910</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">/* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1754,6 +1921,7 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Range</span>;
 
 <span class="doccomment">/// Integral type used for buffer offsets.</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">BufferAddress</span> <span class="op">=</span> <span class="ident">u64</span>;
@@ -1770,6 +1938,8 @@
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BIND_BUFFER_ALIGNMENT</span>: <span class="ident">BufferAddress</span> <span class="op">=</span> <span class="number">256</span>;
 <span class="doccomment">/// Buffer to buffer copy offsets and sizes must be aligned to this number.</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COPY_BUFFER_ALIGNMENT</span>: <span class="ident">BufferAddress</span> <span class="op">=</span> <span class="number">4</span>;
+<span class="doccomment">/// Alignment all push constants need</span>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PUSH_CONSTANT_ALIGNMENT</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">4</span>;
 
 <span class="doccomment">/// Backends supported by wgpu.</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
@@ -1845,28 +2015,17 @@
     }
 }
 
-<span class="doccomment">/// This type is not to be constructed by any users of wgpu. If you construct this type, any semver</span>
-<span class="doccomment">/// guarantees made by wgpu are invalidated and a non-breaking change may break your code.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If you are here trying to construct it, the solution is to use partial construction with the</span>
-<span class="doccomment">/// default:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```ignore</span>
-<span class="doccomment">/// let limits = Limits {</span>
-<span class="doccomment">///     max_bind_groups: 2,</span>
-<span class="doccomment">///     ..Limits::default()</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Default</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Hash</span>)]</span>
+<span class="doccomment">/// Options for requesting adapter.</span>
+<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Default</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;trace&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;replay&quot;</span>, <span class="ident">derive</span>(<span class="ident">Deserialize</span>))]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">NonExhaustive</span>(());
-
-<span class="kw">impl</span> <span class="ident">NonExhaustive</span> {
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span>(())
-    }
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RequestAdapterOptions</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// Power preference for the adapter.</span>
+    <span class="kw">pub</span> <span class="ident">power_preference</span>: <span class="ident">PowerPreference</span>,
+    <span class="doccomment">/// Surface that is required to be presentable with the requested adapter. This does not</span>
+    <span class="doccomment">/// create the surface, only guarantees that the adapter can present to said surface.</span>
+    <span class="kw">pub</span> <span class="ident">compatible_surface</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>,
 }
 
 <span class="ident">bitflags</span>::<span class="macro">bitflags</span><span class="macro">!</span> {
@@ -1970,15 +2129,32 @@
         <span class="doccomment">///</span>
         <span class="doccomment">/// This allows the use of a buffer containing the actual number of draw calls.</span>
         <span class="doccomment">///</span>
+        <span class="doccomment">/// A block of push constants can be declared with `layout(push_constant) uniform Name {..}` in shaders.</span>
+        <span class="doccomment">///</span>
         <span class="doccomment">/// Supported platforms:</span>
         <span class="doccomment">/// - DX12</span>
         <span class="doccomment">/// - Vulkan 1.2+ (or VK_KHR_draw_indirect_count)</span>
         <span class="doccomment">///</span>
         <span class="doccomment">/// This is a native only feature.</span>
         <span class="kw">const</span> <span class="ident">MULTI_DRAW_INDIRECT_COUNT</span> <span class="op">=</span> <span class="number">0x0000_0000_0040_0000</span>;
-        <span class="doccomment">/// Features which are part of the upstream webgpu standard</span>
+        <span class="doccomment">/// Allows the use of push constants: small, fast bits of memory that can be updated</span>
+        <span class="doccomment">/// inside a [`RenderPass`].</span>
+        <span class="doccomment">///</span>
+        <span class="doccomment">/// Allows the user to call [`RenderPass::set_push_constants`], provide a non-empty array</span>
+        <span class="doccomment">/// to [`PipelineLayoutDescriptor`], and provide a non-zero limit to [`Limits::max_push_constant_size`].</span>
+        <span class="doccomment">///</span>
+        <span class="doccomment">/// Supported platforms:</span>
+        <span class="doccomment">/// - DX12</span>
+        <span class="doccomment">/// - Vulkan</span>
+        <span class="doccomment">/// - Metal</span>
+        <span class="doccomment">/// - DX11 (emulated with uniforms)</span>
+        <span class="doccomment">/// - OpenGL (emulated with uniforms)</span>
+        <span class="doccomment">///</span>
+        <span class="doccomment">/// This is a native only feature.</span>
+        <span class="kw">const</span> <span class="ident">PUSH_CONSTANTS</span> <span class="op">=</span> <span class="number">0x0000_0000_0080_0000</span>;
+        <span class="doccomment">/// Features which are part of the upstream WebGPU standard.</span>
         <span class="kw">const</span> <span class="ident">ALL_WEBGPU</span> <span class="op">=</span> <span class="number">0x0000_0000_0000_FFFF</span>;
-        <span class="doccomment">/// Features that are only available when targeting native (not web)</span>
+        <span class="doccomment">/// Features that are only available when targeting native (not web).</span>
         <span class="kw">const</span> <span class="ident">ALL_NATIVE</span> <span class="op">=</span> <span class="number">0xFFFF_FFFF_FFFF_0000</span>;
     }
 }
@@ -1996,21 +2172,53 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// See also: https://gpuweb.github.io/gpuweb/#dictdef-gpulimits</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;trace&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;replay&quot;</span>, <span class="ident">derive</span>(<span class="ident">Deserialize</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Limits</span> {
     <span class="doccomment">/// Amount of bind groups that can be attached to a pipeline at the same time. Defaults to 4. Higher is &quot;better&quot;.</span>
     <span class="kw">pub</span> <span class="ident">max_bind_groups</span>: <span class="ident">u32</span>,
-    <span class="doccomment">/// This struct must be partially constructed from its default.</span>
-    <span class="kw">pub</span> <span class="ident">_non_exhaustive</span>: <span class="ident">NonExhaustive</span>,
+    <span class="doccomment">/// Amount of uniform buffer bindings that can be dynamic in a single pipeline. Defaults to 8. Higher is &quot;better&quot;.</span>
+    <span class="kw">pub</span> <span class="ident">max_dynamic_uniform_buffers_per_pipeline_layout</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Amount of storage buffer bindings that can be dynamic in a single pipeline. Defaults to 4. Higher is &quot;better&quot;.</span>
+    <span class="kw">pub</span> <span class="ident">max_dynamic_storage_buffers_per_pipeline_layout</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Amount of sampled textures visible in a single shader stage. Defaults to 16. Higher is &quot;better&quot;.</span>
+    <span class="kw">pub</span> <span class="ident">max_sampled_textures_per_shader_stage</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Amount of samplers visible in a single shader stage. Defaults to 16. Higher is &quot;better&quot;.</span>
+    <span class="kw">pub</span> <span class="ident">max_samplers_per_shader_stage</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Amount of storage buffers visible in a single shader stage. Defaults to 4. Higher is &quot;better&quot;.</span>
+    <span class="kw">pub</span> <span class="ident">max_storage_buffers_per_shader_stage</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Amount of storage textures visible in a single shader stage. Defaults to 4. Higher is &quot;better&quot;.</span>
+    <span class="kw">pub</span> <span class="ident">max_storage_textures_per_shader_stage</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Amount of uniform buffers visible in a single shader stage. Defaults to 12. Higher is &quot;better&quot;.</span>
+    <span class="kw">pub</span> <span class="ident">max_uniform_buffers_per_shader_stage</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Maximum size in bytes of a binding to a uniform buffer. Defaults to 16384. Higher is &quot;better&quot;.</span>
+    <span class="kw">pub</span> <span class="ident">max_uniform_buffer_binding_size</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Amount of storage available for push constants in bytes. Defaults to 0. Higher is &quot;better&quot;.</span>
+    <span class="doccomment">/// Requesting more than 0 during device creation requires [`Features::PUSH_CONSTANTS`] to be enabled.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Expect the size to be:</span>
+    <span class="doccomment">/// - Vulkan: 128-256 bytes</span>
+    <span class="doccomment">/// - DX12: 256 bytes</span>
+    <span class="doccomment">/// - Metal: 4096 bytes</span>
+    <span class="doccomment">/// - DX11 &amp; OpenGL don&#39;t natively support push constants, and are emulated with uniforms,</span>
+    <span class="doccomment">///   so this number is less useful.</span>
+    <span class="kw">pub</span> <span class="ident">max_push_constant_size</span>: <span class="ident">u32</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">Limits</span> {
     <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">Limits</span> {
             <span class="ident">max_bind_groups</span>: <span class="number">4</span>,
-            <span class="ident">_non_exhaustive</span>: <span class="kw">unsafe</span> { <span class="ident">NonExhaustive</span>::<span class="ident">new</span>() },
+            <span class="ident">max_dynamic_uniform_buffers_per_pipeline_layout</span>: <span class="number">8</span>,
+            <span class="ident">max_dynamic_storage_buffers_per_pipeline_layout</span>: <span class="number">4</span>,
+            <span class="ident">max_sampled_textures_per_shader_stage</span>: <span class="number">16</span>,
+            <span class="ident">max_samplers_per_shader_stage</span>: <span class="number">16</span>,
+            <span class="ident">max_storage_buffers_per_shader_stage</span>: <span class="number">4</span>,
+            <span class="ident">max_storage_textures_per_shader_stage</span>: <span class="number">4</span>,
+            <span class="ident">max_uniform_buffers_per_shader_stage</span>: <span class="number">12</span>,
+            <span class="ident">max_uniform_buffer_binding_size</span>: <span class="number">16384</span>,
+            <span class="ident">max_push_constant_size</span>: <span class="number">0</span>,
         }
     }
 }
@@ -2039,8 +2247,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// `ShaderStage::VERTEX | ShaderStage::FRAGMENT`</span>
     <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-    <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;trace&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>))]</span>
-    <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;replay&quot;</span>, <span class="ident">derive</span>(<span class="ident">Deserialize</span>))]</span>
+    <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>))]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ShaderStage</span>: <span class="ident">u32</span> {
         <span class="doccomment">/// Binding is not visible from any shader stage</span>
         <span class="kw">const</span> <span class="ident">NONE</span> <span class="op">=</span> <span class="number">0</span>;
@@ -2879,6 +3086,15 @@
     <span class="kw">pub</span> <span class="ident">stencil</span>: <span class="ident">PassChannel</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>,
 }
 
+<span class="doccomment">/// Describes the attachments of a render pass.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Default</span>, <span class="ident">PartialEq</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RenderPassDescriptor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">C</span>, <span class="ident">D</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// The color attachments of the render pass.</span>
+    <span class="kw">pub</span> <span class="ident">color_attachments</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">C</span>],
+    <span class="doccomment">/// The depth and stencil attachment of the render pass, if any.</span>
+    <span class="kw">pub</span> <span class="ident">depth_stencil_attachment</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>,
+}
+
 <span class="doccomment">/// RGBA double precision color.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This is not to be used as a generic color type, only for specific wgpu interfaces.</span>
@@ -3152,8 +3368,6 @@
     <span class="kw">pub</span> <span class="ident">compare</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">CompareFunction</span><span class="op">&gt;</span>,
     <span class="doccomment">/// Valid values: 1, 2, 4, 8, and 16.</span>
     <span class="kw">pub</span> <span class="ident">anisotropy_clamp</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>,
-    <span class="doccomment">/// This struct must be partially constructed from its default</span>
-    <span class="kw">pub</span> <span class="ident">_non_exhaustive</span>: <span class="ident">NonExhaustive</span>,
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">L</span>: <span class="ident">Default</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">SamplerDescriptor</span><span class="op">&lt;</span><span class="ident">L</span><span class="op">&gt;</span> {
@@ -3170,7 +3384,6 @@
             <span class="ident">lod_max_clamp</span>: <span class="ident">std</span>::<span class="ident">f32</span>::<span class="ident">MAX</span>,
             <span class="ident">compare</span>: <span class="ident">Default</span>::<span class="ident">default</span>(),
             <span class="ident">anisotropy_clamp</span>: <span class="ident">Default</span>::<span class="ident">default</span>(),
-            <span class="ident">_non_exhaustive</span>: <span class="ident">Default</span>::<span class="ident">default</span>(),
         }
     }
 }
@@ -3189,9 +3402,111 @@
             <span class="ident">lod_max_clamp</span>: <span class="self">self</span>.<span class="ident">lod_max_clamp</span>,
             <span class="ident">compare</span>: <span class="self">self</span>.<span class="ident">compare</span>,
             <span class="ident">anisotropy_clamp</span>: <span class="self">self</span>.<span class="ident">anisotropy_clamp</span>,
-            <span class="ident">_non_exhaustive</span>: <span class="self">self</span>.<span class="ident">_non_exhaustive</span>,
         }
     }
+}
+
+<span class="doccomment">/// Bindable resource and the slot to bind it to.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">BindGroupEntry</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// Slot for which binding provides resource. Corresponds to an entry of the same</span>
+    <span class="doccomment">/// binding index in the [`BindGroupLayoutDescriptor`].</span>
+    <span class="kw">pub</span> <span class="ident">binding</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Resource to attach to the binding</span>
+    <span class="kw">pub</span> <span class="ident">resource</span>: <span class="ident">R</span>,
+}
+
+<span class="doccomment">/// Describes a group of bindings and the resources to be bound.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">BindGroupDescriptor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">L</span>, <span class="ident">B</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// Debug label of the bind group. This will show up in graphics debuggers for easy identification.</span>
+    <span class="kw">pub</span> <span class="ident">label</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// The [`BindGroupLayout`] that corresponds to this bind group.</span>
+    <span class="kw">pub</span> <span class="ident">layout</span>: <span class="ident">L</span>,
+    <span class="doccomment">/// The resources to bind to this bind group.</span>
+    <span class="kw">pub</span> <span class="ident">entries</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">B</span>],
+}
+
+<span class="doccomment">/// Describes a pipeline layout.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// A `PipelineLayoutDescriptor` can be used to create a pipeline layout.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">PipelineLayoutDescriptor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">B</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// Bind groups that this pipeline uses. The first entry will provide all the bindings for</span>
+    <span class="doccomment">/// &quot;set = 0&quot;, second entry will provide all the bindings for &quot;set = 1&quot; etc.</span>
+    <span class="kw">pub</span> <span class="ident">bind_group_layouts</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">B</span>],
+    <span class="doccomment">/// Set of push constant ranges this pipeline uses. Each shader stage that uses push constants</span>
+    <span class="doccomment">/// must define the range in push constant memory that corresponds to its single `layout(push_constant)`</span>
+    <span class="doccomment">/// uniform block.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If this array is non-empty, the [`Features::PUSH_CONSTANTS`] must be enabled.</span>
+    <span class="kw">pub</span> <span class="ident">push_constant_ranges</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">PushConstantRange</span>],
+}
+
+<span class="doccomment">/// A range of push constant memory to pass to a shader stage.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;trace&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;replay&quot;</span>, <span class="ident">derive</span>(<span class="ident">Deserialize</span>))]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">PushConstantRange</span> {
+    <span class="doccomment">/// Stage push constant range is visible from. Each stage can only be served by at most one range.</span>
+    <span class="doccomment">/// One range can serve multiple stages however.</span>
+    <span class="kw">pub</span> <span class="ident">stages</span>: <span class="ident">ShaderStage</span>,
+    <span class="doccomment">/// Range in push constant memory to use for the stage. Must be less than [`Limits::max_push_constant_size`].</span>
+    <span class="doccomment">/// Start and end must be aligned to the 4s.</span>
+    <span class="kw">pub</span> <span class="ident">range</span>: <span class="ident">Range</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>,
+}
+
+<span class="doccomment">/// Describes a programmable pipeline stage.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ProgrammableStageDescriptor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">M</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// The compiled shader module for this stage.</span>
+    <span class="kw">pub</span> <span class="ident">module</span>: <span class="ident">M</span>,
+    <span class="doccomment">/// The name of the entry point in the compiled shader. There must be a function that returns</span>
+    <span class="doccomment">/// void with this name in the shader.</span>
+    <span class="kw">pub</span> <span class="ident">entry_point</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>,
+}
+
+<span class="doccomment">/// Describes a render (graphics) pipeline.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RenderPipelineDescriptor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">L</span>, <span class="ident">D</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// The layout of bind groups for this pipeline.</span>
+    <span class="kw">pub</span> <span class="ident">layout</span>: <span class="ident">L</span>,
+    <span class="doccomment">/// The compiled vertex stage and its entry point.</span>
+    <span class="kw">pub</span> <span class="ident">vertex_stage</span>: <span class="ident">D</span>,
+    <span class="doccomment">/// The compiled fragment stage and its entry point, if any.</span>
+    <span class="kw">pub</span> <span class="ident">fragment_stage</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// The rasterization process for this pipeline.</span>
+    <span class="kw">pub</span> <span class="ident">rasterization_state</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RasterizationStateDescriptor</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// The primitive topology used to interpret vertices.</span>
+    <span class="kw">pub</span> <span class="ident">primitive_topology</span>: <span class="ident">PrimitiveTopology</span>,
+    <span class="doccomment">/// The effect of draw calls on the color aspect of the output target.</span>
+    <span class="kw">pub</span> <span class="ident">color_states</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">ColorStateDescriptor</span>],
+    <span class="doccomment">/// The effect of draw calls on the depth and stencil aspects of the output target, if any.</span>
+    <span class="kw">pub</span> <span class="ident">depth_stencil_state</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DepthStencilStateDescriptor</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// The vertex input state for this pipeline.</span>
+    <span class="kw">pub</span> <span class="ident">vertex_state</span>: <span class="ident">VertexStateDescriptor</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// The number of samples calculated per pixel (for MSAA). For non-multisampled textures,</span>
+    <span class="doccomment">/// this should be `1`</span>
+    <span class="kw">pub</span> <span class="ident">sample_count</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// Bitmask that restricts the samples of a pixel modified by this pipeline. All samples</span>
+    <span class="doccomment">/// can be enabled using the value `!0`</span>
+    <span class="kw">pub</span> <span class="ident">sample_mask</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// When enabled, produces another sample mask per pixel based on the alpha output value, that</span>
+    <span class="doccomment">/// is ANDed with the sample_mask and the primitive coverage to restrict the set of samples</span>
+    <span class="doccomment">/// affected by a primitive.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The implicit mask produced for alpha of zero is guaranteed to be zero, and for alpha of one</span>
+    <span class="doccomment">/// is guaranteed to be all 1-s.</span>
+    <span class="kw">pub</span> <span class="ident">alpha_to_coverage_enabled</span>: <span class="ident">bool</span>,
+}
+
+<span class="doccomment">/// Describes a compute pipeline.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ComputePipelineDescriptor</span><span class="op">&lt;</span><span class="ident">L</span>, <span class="ident">D</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// The layout of bind groups for this pipeline.</span>
+    <span class="kw">pub</span> <span class="ident">layout</span>: <span class="ident">L</span>,
+    <span class="doccomment">/// The compiled compute stage and its entry point.</span>
+    <span class="kw">pub</span> <span class="ident">compute_stage</span>: <span class="ident">D</span>,
 }
 
 <span class="doccomment">/// Describes a [`CommandBuffer`].</span>
@@ -3328,7 +3643,6 @@
 <span class="doccomment">/// Specific type of a binding.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// WebGPU spec: https://gpuweb.github.io/gpuweb/#dictdef-gpubindgrouplayoutentry</span>
-<span class="attribute">#[<span class="ident">non_exhaustive</span>]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;trace&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;replay&quot;</span>, <span class="ident">derive</span>(<span class="ident">Deserialize</span>))]</span>
@@ -3451,9 +3765,6 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// If this value is Some and `ty` is any other variant, bind group creation will fail.</span>
     <span class="kw">pub</span> <span class="ident">count</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>,
-    <span class="doccomment">/// This struct should be partially initalized using the default method, but binding, visibility,</span>
-    <span class="doccomment">/// and ty should be set.</span>
-    <span class="kw">pub</span> <span class="ident">_non_exhaustive</span>: <span class="ident">NonExhaustive</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">BindGroupLayoutEntry</span> {
@@ -3463,7 +3774,6 @@
             <span class="ident">visibility</span>,
             <span class="ident">ty</span>,
             <span class="ident">count</span>: <span class="prelude-val">None</span>,
-            <span class="ident">_non_exhaustive</span>: <span class="kw">unsafe</span> { <span class="ident">NonExhaustive</span>::<span class="ident">new</span>() },
         }
     }
 
@@ -3482,8 +3792,32 @@
     <span class="doccomment">/// Debug label of the bind group layout. This will show up in graphics debuggers for easy identification.</span>
     <span class="kw">pub</span> <span class="ident">label</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span>,
 
-    <span class="doccomment">/// Array of bindings in this BindGroupLayout</span>
-    <span class="kw">pub</span> <span class="ident">bindings</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">BindGroupLayoutEntry</span>],
+    <span class="doccomment">/// Array of entries in this BindGroupLayout</span>
+    <span class="kw">pub</span> <span class="ident">entries</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">BindGroupLayoutEntry</span>],
+}
+
+<span class="doccomment">/// View of a buffer which can be used to copy to/from a texture.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;trace&quot;</span>, <span class="ident">derive</span>(<span class="ident">serde</span>::<span class="ident">Serialize</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;replay&quot;</span>, <span class="ident">derive</span>(<span class="ident">serde</span>::<span class="ident">Deserialize</span>))]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">BufferCopyView</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// The buffer to be copied to/from.</span>
+    <span class="kw">pub</span> <span class="ident">buffer</span>: <span class="ident">B</span>,
+    <span class="doccomment">/// The layout of the texture data in this buffer.</span>
+    <span class="kw">pub</span> <span class="ident">layout</span>: <span class="ident">TextureDataLayout</span>,
+}
+
+<span class="doccomment">/// View of a texture which can be used to copy to/from a buffer/texture.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;trace&quot;</span>, <span class="ident">derive</span>(<span class="ident">serde</span>::<span class="ident">Serialize</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;replay&quot;</span>, <span class="ident">derive</span>(<span class="ident">serde</span>::<span class="ident">Deserialize</span>))]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TextureCopyView</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// The texture to be copied to/from.</span>
+    <span class="kw">pub</span> <span class="ident">texture</span>: <span class="ident">T</span>,
+    <span class="doccomment">/// The target mip level of the texture.</span>
+    <span class="kw">pub</span> <span class="ident">mip_level</span>: <span class="ident">u32</span>,
+    <span class="doccomment">/// The base texel of the texture in the selected `mip_level`.</span>
+    <span class="kw">pub</span> <span class="ident">origin</span>: <span class="ident">Origin3d</span>,
 }
 </pre></div>
 </section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "wgpu_types";</script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>
